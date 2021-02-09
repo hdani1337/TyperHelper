@@ -154,8 +154,8 @@
             this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 2;
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 85F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 75F));
             this.tableLayoutPanel5.Size = new System.Drawing.Size(410, 72);
             this.tableLayoutPanel5.TabIndex = 0;
             // 
@@ -176,14 +176,17 @@
             this.button1.TabIndex = 1;
             this.button1.Text = "Fájl kiválasztása...";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // progresses
             // 
             this.progresses.FormattingEnabled = true;
-            this.progresses.Location = new System.Drawing.Point(3, 13);
+            this.progresses.Location = new System.Drawing.Point(3, 21);
             this.progresses.Name = "progresses";
             this.progresses.Size = new System.Drawing.Size(405, 21);
             this.progresses.TabIndex = 1;
+            this.progresses.SelectedIndexChanged += new System.EventHandler(this.progresses_SelectedIndexChanged);
+            this.progresses.Click += new System.EventHandler(this.progresses_Click);
             // 
             // tableLayoutPanel6
             // 
@@ -195,8 +198,8 @@
             this.tableLayoutPanel6.Location = new System.Drawing.Point(419, 3);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
             this.tableLayoutPanel6.RowCount = 2;
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 85F));
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 75F));
             this.tableLayoutPanel6.Size = new System.Drawing.Size(411, 72);
             this.tableLayoutPanel6.TabIndex = 1;
             // 
@@ -205,7 +208,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(3, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(119, 10);
+            this.label3.Size = new System.Drawing.Size(119, 13);
             this.label3.TabIndex = 2;
             this.label3.Text = "Folyamat kiválasztása...";
             // 
