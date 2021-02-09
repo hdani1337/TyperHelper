@@ -1,0 +1,10 @@
+C:\Users\user\Desktop\TyperHelper\TyperHelper\bin\Debug\TyperHelper.exe.config
+C:\Users\user\Desktop\TyperHelper\TyperHelper\bin\Debug\TyperHelper.exe
+C:\Users\user\Desktop\TyperHelper\TyperHelper\bin\Debug\TyperHelper.pdb
+C:\Users\user\Desktop\TyperHelper\TyperHelper\obj\Debug\TyperHelper.csprojAssemblyReference.cache
+C:\Users\user\Desktop\TyperHelper\TyperHelper\obj\Debug\TyperHelper.Form1.resources
+C:\Users\user\Desktop\TyperHelper\TyperHelper\obj\Debug\TyperHelper.Properties.Resources.resources
+C:\Users\user\Desktop\TyperHelper\TyperHelper\obj\Debug\TyperHelper.csproj.GenerateResource.cache
+C:\Users\user\Desktop\TyperHelper\TyperHelper\obj\Debug\TyperHelper.csproj.CoreCompileInputs.cache
+C:\Users\user\Desktop\TyperHelper\TyperHelper\obj\Debug\TyperHelper.exe
+C:\Users\user\Desktop\TyperHelper\TyperHelper\obj\Debug\TyperHelper.pdb
