@@ -32,13 +32,14 @@ namespace TyperHelper
         {
             chooseFile.ShowDialog();
 
-            if (chooseFile.FileName.EndsWith(".txt"))
-            {
-                //Sikeres fájl kiválasztva   
+            while (!chooseFile.FileName.EndsWith(".txt")) {
+                MessageBox.Show("Kérlek .txt kiterjesztésű fájlt válassz ki!", "Hiba!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                chooseFile.ShowDialog();
             }
-            else {
-                MessageBox.Show("Kérlek .txt kiterjesztésű fájlt válassz ki!","Hiba!",MessageBoxButtons.OK,MessageBoxIcon.Error);
-            }
+
+            szovegInput.ReadOnly = true;
+            szovegInput.Text = "Kiválaszott fájl:\n" + chooseFile.FileName;
+            label1.Visible = false;
           
         }
 
@@ -48,8 +49,7 @@ namespace TyperHelper
         }
 
         private void progresses_Click(object sender, EventArgs e)
-        {
-            //progresses.DataSource = 
+        {          
             List<Process> processes = System.Diagnostics.Process.GetProcesses().ToList();
             List<string> processNames = new List<string>();
 
@@ -60,6 +60,15 @@ namespace TyperHelper
             processNames.Sort();
 
             progresses.DataSource = processNames;
+        }
+
+        private void startButton_Click(object sender, EventArgs e)
+        {
+            string text = "";         
+
+            if (chooseFile.FileName == "openFileDialog1") {
+                //Nincs fájl kiválasztva
+            }
         }
     }
 }

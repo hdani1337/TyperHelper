@@ -170,7 +170,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(3, 17);
+            this.button1.Location = new System.Drawing.Point(2, 18);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(104, 23);
             this.button1.TabIndex = 1;
@@ -185,6 +185,7 @@
             this.progresses.Name = "progresses";
             this.progresses.Size = new System.Drawing.Size(405, 21);
             this.progresses.TabIndex = 1;
+            this.progresses.Text = "Kattints ide a programok megjelenítéséhez...";
             this.progresses.SelectedIndexChanged += new System.EventHandler(this.progresses_SelectedIndexChanged);
             this.progresses.Click += new System.EventHandler(this.progresses_Click);
             // 
@@ -259,6 +260,7 @@
             this.startButton.TabIndex = 0;
             this.startButton.Text = "Indítás";
             this.startButton.UseVisualStyleBackColor = true;
+            this.startButton.Click += new System.EventHandler(this.startButton_Click);
             // 
             // tableLayoutPanel9
             // 
@@ -291,7 +293,7 @@
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(303, 34);
             this.label4.TabIndex = 1;
-            this.label4.Text = "Késleltetés a billentyűleütések között...";
+            this.label4.Text = "Késleltetés a billentyűleütések között... (ms)";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // Form1
@@ -300,6 +302,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(845, 354);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
             this.Name = "Form1";
             this.Text = "TyperHelper";
             this.tableLayoutPanel1.ResumeLayout(false);
