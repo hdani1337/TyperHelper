@@ -54,11 +54,6 @@ namespace TyperHelper
 
         }
 
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
             chooseFile.ShowDialog();
@@ -86,18 +81,28 @@ namespace TyperHelper
 
         private void startButton_Click(object sender, EventArgs e)
         {
+            latency = 0;
+            startButton.Enabled = false;
+            
             Int32.TryParse(textBox1.Text, out latency);
+
+            MessageBox.Show(latency + "");
 
             if (latency != 0)
             {
                 if (chooseFile.FileName == "")
                     if (szovegInput.Text == "") _mainHandler.noText();
-                    else text = szovegInput.Text;
+                    else
+                    {
+                        text = szovegInput.Text; 
+                        button1.Enabled = false;
+                    }
                 else
                 {
                     try 
                     {
                         text = File.ReadAllText(chooseFile.FileName);
+                        button1.Enabled = false;
                     }
                     catch (Exception err)
                     {
@@ -106,8 +111,8 @@ namespace TyperHelper
                     }
                 }
                 _mainHandler.write();
+                startButton.Enabled = true;
             }else _mainHandler.latencyIsNull();
         }
-        
     }
 }

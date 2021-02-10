@@ -1,7 +1,11 @@
 ﻿using System;
+using System.ComponentModel;
+using System.Diagnostics;
 using System.Runtime.InteropServices;
+using System.Threading;
 using System.Timers;
 using System.Windows.Forms;
+using Timer = System.Windows.Forms.Timer;
 
 namespace TyperHelper
 {
@@ -28,6 +32,13 @@ namespace TyperHelper
         public MainHandler(Form1 parent)
         {
             this.parent = parent;
+
+        }
+        
+        public void updateProgressBar()
+        {
+            if (parent.text.Length != 0)
+                parent.progressBar1.Value = (typedIndex / parent.text.Length) * 100;
         }
 
         public void latencyIsNull()
@@ -47,24 +58,35 @@ namespace TyperHelper
         public void write()
         {
             typedIndex = 0;
-            foreach (char c in parent.text)
-            {
-                SetForegroundWindow(parent.selectedProcess.MainWindowHandle);
-                pressKey(c);
-                typedIndex++;
-            }
+            Timer timer1 = new Timer    
+            {    
+                Interval = parent.latency   
+            };    
+            timer1.Enabled = true;    
+            timer1.Tick += new System.EventHandler(writeTimerVoid);
         }
 
+        private void writeTimerVoid(object sender, EventArgs e)
+        {
+            if (typedIndex < parent.text.Length)
+            {
+                SetForegroundWindow(parent.selectedProcess.MainWindowHandle);
+                pressKey(parent.text[typedIndex]);
+                typedIndex++;
+                updateProgressBar();
+            }
+
+            parent.button1.Enabled = true;
+            parent.startButton.Enabled = true;
+        }
+        
         private void pressKey(char c)
         {
             byte send = KeyCodes.getHungarianKeys(c);
             capsOn(c);
-            
             SetForegroundWindow(parent.selectedProcess.MainWindowHandle);
-            
             keybd_event(send, 0x52, KeyCodes.KEYEVENTF_KEYDOWN, 0);//hex 'A'
             keybd_event(send, 0x52, KeyCodes.KEYEVENTF_KEYUP, 0);//hex 'A'
-            
             capsOn(c);
         }
 
