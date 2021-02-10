@@ -8,3 +8,12 @@ C:\Users\user\Desktop\TyperHelper\TyperHelper\obj\Debug\TyperHelper.csproj.Gener
 C:\Users\user\Desktop\TyperHelper\TyperHelper\obj\Debug\TyperHelper.csproj.CoreCompileInputs.cache
 C:\Users\user\Desktop\TyperHelper\TyperHelper\obj\Debug\TyperHelper.exe
 C:\Users\user\Desktop\TyperHelper\TyperHelper\obj\Debug\TyperHelper.pdb
+E:\Csány\C#\TyperHelper\bin\Debug\TyperHelper.exe.config
+E:\Csány\C#\TyperHelper\bin\Debug\TyperHelper.exe
+E:\Csány\C#\TyperHelper\bin\Debug\TyperHelper.pdb
+E:\Csány\C#\TyperHelper\obj\Debug\TyperHelper.csprojAssemblyReference.cache
+E:\Csány\C#\TyperHelper\obj\Debug\TyperHelper.Form1.resources
+E:\Csány\C#\TyperHelper\obj\Debug\TyperHelper.Properties.Resources.resources
+E:\Csány\C#\TyperHelper\obj\Debug\TyperHelper.csproj.GenerateResource.cache
+E:\Csány\C#\TyperHelper\obj\Debug\TyperHelper.exe
+E:\Csány\C#\TyperHelper\obj\Debug\TyperHelper.pdb

@@ -339,7 +339,7 @@
         private System.Windows.Forms.ComboBox progresses;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
-        private System.Windows.Forms.ProgressBar progressBar1;
+        public System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
         private System.Windows.Forms.Button startButton;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel9;

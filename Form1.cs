@@ -4,18 +4,49 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Timers;
 using System.Windows.Forms;
 
 namespace TyperHelper
 {
     public partial class Form1 : Form
     {
+        private MainHandler _mainHandler;
+        
+        public List<Process> processes;
+        public List<Process> processesVisible;
+        public List<string> processNames;
+        public Process selectedProcess = null;
+        
+        public string text = "";
+        public int latency = 0;
+
         public Form1()
         {
             InitializeComponent();
+            chooseFile.FileName = "";
+            initLists();
+            _mainHandler = new MainHandler(this);
+        }
+
+        private void initLists()
+        {
+            processes = Process.GetProcesses().ToList();
+            processesVisible = new List<Process>();
+            processNames = new List<string>();
+            foreach (Process p in processes)
+                if(!string.IsNullOrEmpty(p.MainWindowTitle))
+                {
+                    processNames.Add(p.ProcessName);
+                    processesVisible.Add(p);
+                }
+            
+            progresses.DataSource = processNames;
         }
 
         private void chooseFile_FileOk(object sender, CancelEventArgs e)
@@ -40,35 +71,43 @@ namespace TyperHelper
             szovegInput.ReadOnly = true;
             szovegInput.Text = "Kiválaszott fájl:\n" + chooseFile.FileName;
             label1.Visible = false;
-          
         }
 
         private void progresses_SelectedIndexChanged(object sender, EventArgs e)
         {
-           
+            if (processesVisible != null)
+                selectedProcess = processesVisible[progresses.SelectedIndex];
         }
 
         private void progresses_Click(object sender, EventArgs e)
-        {          
-            List<Process> processes = System.Diagnostics.Process.GetProcesses().ToList();
-            List<string> processNames = new List<string>();
-
-            foreach (Process p in processes)
-                if(!string.IsNullOrEmpty(p.MainWindowTitle))
-                    processNames.Add(p.ProcessName);              
-
-            processNames.Sort();
-
-            progresses.DataSource = processNames;
+        {
+            
         }
 
         private void startButton_Click(object sender, EventArgs e)
         {
-            string text = "";         
+            Int32.TryParse(textBox1.Text, out latency);
 
-            if (chooseFile.FileName == "openFileDialog1") {
-                //Nincs fájl kiválasztva
-            }
+            if (latency != 0)
+            {
+                if (chooseFile.FileName == "")
+                    if (szovegInput.Text == "") _mainHandler.noText();
+                    else text = szovegInput.Text;
+                else
+                {
+                    try 
+                    {
+                        text = File.ReadAllText(chooseFile.FileName);
+                    }
+                    catch (Exception err)
+                    {
+                        MessageBox.Show(err.Message, "Hiba!",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                _mainHandler.write();
+            }else _mainHandler.latencyIsNull();
         }
+        
     }
 }
