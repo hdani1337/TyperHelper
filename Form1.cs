@@ -23,8 +23,10 @@ namespace TyperHelper
         public List<string> processNames;
         public Process selectedProcess = null;
         
-        public string text = "";
+        public List<string> text = new List<string>();
         public int latency = 0;
+        public int allTextLength= 0;
+        public List<int> breaks = new List<int>();
 
         public Form1()
         {
@@ -82,11 +84,13 @@ namespace TyperHelper
         private void startButton_Click(object sender, EventArgs e)
         {
             latency = 0;
+            allTextLength = 0;
+            text = new List<string>();
+            breaks = new List<int>();
             startButton.Enabled = false;
+            _mainHandler.progressValue = 0;
             
             Int32.TryParse(textBox1.Text, out latency);
-
-            MessageBox.Show(latency + "");
 
             if (latency != 0)
             {
@@ -94,15 +98,36 @@ namespace TyperHelper
                     if (szovegInput.Text == "") _mainHandler.noText();
                     else
                     {
-                        text = szovegInput.Text; 
+                        text = szovegInput.Text.Split('\r').ToList(); 
+                        for (int ind = 0; ind < text.Count; ind++)
+                        {
+                            for (int typed = 0; typed < text[ind].Length; typed++)
+                            {
+                                allTextLength++;
+                            }
+                            breaks.Add(allTextLength);
+                        }
+                        enterAfter.Enabled = false;
+                        enterBefore.Enabled = false;
                         button1.Enabled = false;
+                        startButton.Enabled = false;
                     }
                 else
                 {
                     try 
                     {
-                        text = File.ReadAllText(chooseFile.FileName);
+                        text = File.ReadAllLines(chooseFile.FileName).ToList();
+                        for (int ind = 0; ind < text.Count; ind++)
+                        {
+                            for (int typed = 0; typed < text[ind].Length; typed++)
+                            {
+                                allTextLength++;
+                            }
+                        }
+                        enterAfter.Enabled = false;
+                        enterBefore.Enabled = false;
                         button1.Enabled = false;
+                        startButton.Enabled = false;
                     }
                     catch (Exception err)
                     {

@@ -10,6 +10,7 @@ namespace TyperHelper
         public const int VK_RIGHT = 0x27;
         public const int KEYEVENTF_EXTENDEDKEY = 0x0001;
         public const int VK_CONTROL = 0x11;
+        public const int VK_RETURN = 0x0D;
         public const int KEYEVENTF_KEYUP = 0x2;
         public const int KEYEVENTF_KEYDOWN = 0x0;
         public const int VK_SHIFT = 0x10;
@@ -58,6 +59,21 @@ namespace TyperHelper
                 case " ":
                 {
                     return VK_SPACE;
+                }
+                
+                case ".":
+                {
+                    return 0XBE;
+                }
+                
+                case "-":
+                {
+                    return 0XBD;
+                }
+
+                case ",":
+                {
+                    return 0XBC;
                 }
 
                 default:
