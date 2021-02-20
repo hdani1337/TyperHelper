@@ -148,7 +148,7 @@
     <value>144, 22</value>
   </data>
   <data name="tableLayoutPanel10.Location" type="System.Drawing.Point, System.Drawing">
-    <value>687, 234</value>
+    <value>687, 232</value>
   </data>
   <data name="tableLayoutPanel10.Size" type="System.Drawing.Size, System.Drawing">
     <value>150, 76</value>
@@ -174,9 +174,6 @@
   <data name="latencyCheck.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="latencyCheck.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 128</value>
-  </data>
   <data name="latencyCheck.Size" type="System.Drawing.Size, System.Drawing">
     <value>144, 37</value>
   </data>
@@ -195,11 +192,8 @@
   <data name="processSelectedCheck.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="processSelectedCheck.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 86</value>
-  </data>
   <data name="processSelectedCheck.Size" type="System.Drawing.Size, System.Drawing">
-    <value>144, 36</value>
+    <value>144, 35</value>
   </data>
   <data name="processSelectedCheck.Text" xml:space="preserve">
     <value>Program kiválasztása</value>
@@ -217,7 +211,7 @@
     <value>NoControl</value>
   </data>
   <data name="textTypedCheck.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 33</value>
+    <value>3, 32</value>
   </data>
   <data name="textTypedCheck.Size" type="System.Drawing.Size, System.Drawing">
     <value>144, 47</value>
@@ -241,7 +235,7 @@
     <value>0, 0, 0, 5</value>
   </data>
   <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>150, 25</value>
+    <value>150, 24</value>
   </data>
   <data name="label9.Text" xml:space="preserve">
     <value>Követelmények</value>
@@ -259,7 +253,7 @@
     <value>4</value>
   </data>
   <data name="tableLayoutPanel14.Size" type="System.Drawing.Size, System.Drawing">
-    <value>150, 168</value>
+    <value>150, 166</value>
   </data>
   <data name="label2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -304,7 +298,7 @@
     <value>2</value>
   </data>
   <data name="tableLayoutPanel13.Size" type="System.Drawing.Size, System.Drawing">
-    <value>156, 231</value>
+    <value>156, 229</value>
   </data>
   <data name="label1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -334,10 +328,10 @@
     <value>0, 3, 3, 3</value>
   </data>
   <data name="szovegInput.Size" type="System.Drawing.Size, System.Drawing">
-    <value>675, 197</value>
+    <value>675, 195</value>
   </data>
   <data name="tableLayoutPanel3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>678, 225</value>
+    <value>678, 223</value>
   </data>
   <data name="tableLayoutPanel4.ColumnCount" type="System.Int32, mscorlib">
     <value>1</value>
@@ -355,7 +349,7 @@
     <value>672, 23</value>
   </data>
   <data name="progresses.Text" xml:space="preserve">
-    <value>Kattints ide a programok megjelenítéséhez...</value>
+    <value>Válassz ki egy programot a listából...</value>
   </data>
   <data name="label3.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 5</value>
@@ -376,7 +370,7 @@
     <value>675, 70</value>
   </data>
   <data name="tableLayoutPanel4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 234</value>
+    <value>0, 232</value>
   </data>
   <data name="tableLayoutPanel4.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 3, 3, 3</value>
@@ -385,7 +379,7 @@
     <value>681, 76</value>
   </data>
   <data name="tableLayoutPanel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>840, 313</value>
+    <value>840, 311</value>
   </data>
   <data name="tableLayoutPanel8.ColumnCount" type="System.Int32, mscorlib">
     <value>3</value>
@@ -409,10 +403,11 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>208, 35</value>
+    <value>208, 36</value>
   </data>
   <data name="label6.Text" xml:space="preserve">
-    <value>Horváth Dániel © 2021</value>
+    <value>Horváth Dániel © 2021
+github.com/hdani1337</value>
   </data>
   <data name="label6.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleLeft</value>
@@ -421,40 +416,37 @@
     <value>628, 3</value>
   </data>
   <data name="startButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>203, 29</value>
+    <value>203, 30</value>
   </data>
-  <data name="textBox1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left</value>
-  </data>
-  <data name="textBox1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="numericUpDown.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="textBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>290, 3</value>
+  <data name="numericUpDown.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
-  <data name="textBox1.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="numericUpDown.Size" type="System.Drawing.Size, System.Drawing">
     <value>118, 23</value>
   </data>
   <data name="label4.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>281, 29</value>
+    <value>281, 30</value>
   </data>
   <data name="tableLayoutPanel9.Location" type="System.Drawing.Point, System.Drawing">
     <value>211, 3</value>
   </data>
   <data name="tableLayoutPanel9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>411, 29</value>
+    <value>411, 30</value>
   </data>
   <data name="tableLayoutPanel8.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 23</value>
+    <value>0, 24</value>
   </data>
   <data name="tableLayoutPanel8.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
   <data name="tableLayoutPanel8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>834, 35</value>
+    <value>834, 36</value>
   </data>
   <data name="progressBar1.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
@@ -463,13 +455,13 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="progressBar1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>834, 23</value>
+    <value>834, 24</value>
   </data>
   <data name="tableLayoutPanel7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 316</value>
+    <value>3, 314</value>
   </data>
   <data name="tableLayoutPanel7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>834, 58</value>
+    <value>834, 60</value>
   </data>
   <data name="tableLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
     <value>840, 377</value>

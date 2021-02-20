@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Timers;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 
 namespace TyperHelper
 {
@@ -32,8 +33,8 @@ namespace TyperHelper
         {
             InitializeComponent();
             chooseFile.FileName = "";
-            initLists();
             _mainHandler = new MainHandler(this);
+            checkStart();
         }
 
         private void initLists()
@@ -44,7 +45,7 @@ namespace TyperHelper
             foreach (Process p in processes)
                 if(!string.IsNullOrEmpty(p.MainWindowTitle))
                 {
-                    processNames.Add(p.ProcessName);
+                    processNames.Add("["+p.ProcessName.Substring(0,1).ToUpper()+p.ProcessName.Substring(1,p.ProcessName.Length-1)+"]: " + p.MainWindowTitle);
                     processesVisible.Add(p);
                 }
             
@@ -53,32 +54,41 @@ namespace TyperHelper
 
         private void chooseFile_FileOk(object sender, CancelEventArgs e)
         {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            chooseFile.ShowDialog();
-
-            while (!chooseFile.FileName.EndsWith(".txt")) {
-                MessageBox.Show("Kérlek .txt kiterjesztésű fájlt válassz ki!", "Hiba!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                chooseFile.ShowDialog();
+            if (!chooseFile.FileName.EndsWith(".txt"))
+            {
+                MessageBox.Show("Kérlek .txt kiterjesztésű fájlt válassz ki!", "Hiba!", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
             }
-
-            szovegInput.ReadOnly = true;
-            szovegInput.Text = "Kiválaszott fájl:\n" + chooseFile.FileName;
-            label1.Visible = false;
+            else
+            {
+                szovegInput.ReadOnly = true;
+                textTypedCheck.Checked = true;
+                szovegInput.Text = "Kiválaszott fájl:\n" + chooseFile.FileName;
+            }
         }
 
         private void progresses_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (processesVisible != null)
+            if (processesVisible != null){
                 selectedProcess = processesVisible[progresses.SelectedIndex];
+                processSelectedCheck.Checked = true;
+                checkStart();
+            }
         }
 
         private void progresses_Click(object sender, EventArgs e)
         {
-            
+            initLists();
+        }
+
+        public void setButtons(bool enabled)
+        {
+            enterAfter.Enabled = enabled;
+            enterBefore.Enabled = enabled;
+            button1.Enabled = enabled;
+            startButton.Enabled = enabled;
+            progresses.Enabled = enabled;
+            numericUpDown.Enabled = enabled;
         }
 
         private void startButton_Click(object sender, EventArgs e)
@@ -87,57 +97,65 @@ namespace TyperHelper
             allTextLength = 0;
             text = new List<string>();
             breaks = new List<int>();
-            startButton.Enabled = false;
-            _mainHandler.progressValue = 0;
-            
-            Int32.TryParse(textBox1.Text, out latency);
+            setButtons(false);
 
-            if (latency != 0)
+            latency = (int) numericUpDown.Value;
+            
+            if (chooseFile.FileName == "")
+                text = szovegInput.Text.Split('\r').ToList();
+            else
             {
-                if (chooseFile.FileName == "")
-                    if (szovegInput.Text == "") _mainHandler.noText();
-                    else
-                    {
-                        text = szovegInput.Text.Split('\r').ToList(); 
-                        for (int ind = 0; ind < text.Count; ind++)
-                        {
-                            for (int typed = 0; typed < text[ind].Length; typed++)
-                            {
-                                allTextLength++;
-                            }
-                            breaks.Add(allTextLength);
-                        }
-                        enterAfter.Enabled = false;
-                        enterBefore.Enabled = false;
-                        button1.Enabled = false;
-                        startButton.Enabled = false;
-                    }
-                else
+                try 
                 {
-                    try 
-                    {
-                        text = File.ReadAllLines(chooseFile.FileName).ToList();
-                        for (int ind = 0; ind < text.Count; ind++)
-                        {
-                            for (int typed = 0; typed < text[ind].Length; typed++)
-                            {
-                                allTextLength++;
-                            }
-                        }
-                        enterAfter.Enabled = false;
-                        enterBefore.Enabled = false;
-                        button1.Enabled = false;
-                        startButton.Enabled = false;
-                    }
-                    catch (Exception err)
-                    {
-                        MessageBox.Show(err.Message, "Hiba!",
-                            MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
+                    text = File.ReadAllLines(chooseFile.FileName).ToList();
                 }
-                _mainHandler.write();
-                startButton.Enabled = true;
-            }else _mainHandler.latencyIsNull();
+                catch (Exception err)
+                {
+                    MessageBox.Show(err.Message, "Hiba!",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            
+            for (int ind = 0; ind < text.Count; ind++)
+            {
+                for (int typed = 0; typed < text[ind].Length; typed++)
+                {
+                    allTextLength++;
+                }
+
+                breaks.Add(allTextLength);
+            }
+
+            progressBar1.Maximum = allTextLength;
+
+            _mainHandler.write();
+        }
+
+        private void szovegInput_TextChanged(object sender, EventArgs e)
+        {
+            textTypedCheck.Checked = (szovegInput.Text.Length > 0);
+            checkStart();
+        }
+
+        private void tableLayoutPanel9_Paint(object sender, PaintEventArgs e)
+        {
+           
+        }
+
+        private void numericUpDown_ValueChanged(object sender, EventArgs e)
+        {
+            latencyCheck.Checked = (numericUpDown.Value > 0);
+            checkStart();
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            chooseFile.ShowDialog();
+        }
+
+        private void checkStart()
+        {
+            startButton.Enabled = (textTypedCheck.Checked && latencyCheck.Checked && processSelectedCheck.Checked);
         }
     }
 }

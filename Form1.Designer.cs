@@ -56,6 +56,9 @@
             this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
             this.label6 = new System.Windows.Forms.Label();
             this.startButton = new System.Windows.Forms.Button();
+            this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
+            this.numericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.label4 = new System.Windows.Forms.Label();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.chooseFile = new System.Windows.Forms.OpenFileDialog();
             this.tableLayoutPanel11 = new System.Windows.Forms.TableLayoutPanel();
@@ -64,9 +67,6 @@
             this.tableLayoutPanel12 = new System.Windows.Forms.TableLayoutPanel();
             this.label8 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel10.SuspendLayout();
@@ -78,9 +78,10 @@
             this.tableLayoutPanel6.SuspendLayout();
             this.tableLayoutPanel7.SuspendLayout();
             this.tableLayoutPanel8.SuspendLayout();
+            this.tableLayoutPanel9.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize) (this.numericUpDown)).BeginInit();
             this.tableLayoutPanel11.SuspendLayout();
             this.tableLayoutPanel12.SuspendLayout();
-            this.tableLayoutPanel9.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -180,6 +181,7 @@
             resources.ApplyResources(this.button1, "button1");
             this.button1.Name = "button1";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // tableLayoutPanel3
             // 
@@ -252,10 +254,32 @@
             this.startButton.UseVisualStyleBackColor = true;
             this.startButton.Click += new System.EventHandler(this.startButton_Click);
             // 
+            // tableLayoutPanel9
+            // 
+            resources.ApplyResources(this.tableLayoutPanel9, "tableLayoutPanel9");
+            this.tableLayoutPanel9.Controls.Add(this.numericUpDown, 1, 0);
+            this.tableLayoutPanel9.Controls.Add(this.label4, 0, 0);
+            this.tableLayoutPanel9.Name = "tableLayoutPanel9";
+            this.tableLayoutPanel9.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel9_Paint);
+            // 
+            // numericUpDown
+            // 
+            resources.ApplyResources(this.numericUpDown, "numericUpDown");
+            this.numericUpDown.Maximum = new decimal(new int[] {10000, 0, 0, 0});
+            this.numericUpDown.Name = "numericUpDown";
+            this.numericUpDown.ValueChanged += new System.EventHandler(this.numericUpDown_ValueChanged);
+            // 
+            // label4
+            // 
+            resources.ApplyResources(this.label4, "label4");
+            this.label4.Name = "label4";
+            // 
             // progressBar1
             // 
             resources.ApplyResources(this.progressBar1, "progressBar1");
             this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Step = 1;
+            this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             // 
             // chooseFile
             // 
@@ -297,24 +321,6 @@
             this.button3.Name = "button3";
             this.button3.UseVisualStyleBackColor = true;
             // 
-            // label4
-            // 
-            resources.ApplyResources(this.label4, "label4");
-            this.label4.Name = "label4";
-            // 
-            // textBox1
-            // 
-            resources.ApplyResources(this.textBox1, "textBox1");
-            this.textBox1.Name = "textBox1";
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
-            // 
-            // tableLayoutPanel9
-            // 
-            resources.ApplyResources(this.tableLayoutPanel9, "tableLayoutPanel9");
-            this.tableLayoutPanel9.Controls.Add(this.textBox1, 1, 0);
-            this.tableLayoutPanel9.Controls.Add(this.label4, 0, 0);
-            this.tableLayoutPanel9.Name = "tableLayoutPanel9";
-            // 
             // Form1
             // 
             resources.ApplyResources(this, "$this");
@@ -339,12 +345,13 @@
             this.tableLayoutPanel7.ResumeLayout(false);
             this.tableLayoutPanel8.ResumeLayout(false);
             this.tableLayoutPanel8.PerformLayout();
+            this.tableLayoutPanel9.ResumeLayout(false);
+            this.tableLayoutPanel9.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize) (this.numericUpDown)).EndInit();
             this.tableLayoutPanel11.ResumeLayout(false);
             this.tableLayoutPanel11.PerformLayout();
             this.tableLayoutPanel12.ResumeLayout(false);
             this.tableLayoutPanel12.PerformLayout();
-            this.tableLayoutPanel9.ResumeLayout(false);
-            this.tableLayoutPanel9.PerformLayout();
             this.ResumeLayout(false);
         }
 
@@ -364,7 +371,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel9;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.RichTextBox szovegInput;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel10;
@@ -382,11 +388,12 @@
         private System.Windows.Forms.CheckBox textTypedCheck;
         private System.Windows.Forms.CheckBox processSelectedCheck;
         private System.Windows.Forms.CheckBox latencyCheck;
-        private System.Windows.Forms.Button startButton;
-        private System.Windows.Forms.CheckBox enterAfter;
-        private System.Windows.Forms.CheckBox enterBefore;
+        private System.Windows.Forms.NumericUpDown numericUpDown;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.Button startButton;
+        public System.Windows.Forms.ProgressBar progressBar1;
+        public System.Windows.Forms.CheckBox enterBefore;
+        public System.Windows.Forms.CheckBox enterAfter;
     }
 }
 

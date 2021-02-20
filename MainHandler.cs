@@ -32,39 +32,26 @@ namespace TyperHelper
         public MainHandler(Form1 parent)
         {
             this.parent = parent;
-            progressValue = 0;
         }
-
-        public double progressValue;
         
         public void updateProgressBar()
         {            
             if (parent.text.Count != 0){
-                progressValue += (double)(1.0/parent.allTextLength);
                 parent.progressBar1.Invoke((Action) (() =>
-                    parent.progressBar1.Value = (int) (progressValue*100)));
+                    parent.progressBar1.Increment(1)));
             }
         }
 
-        public void latencyIsNull()
-        {
-            MessageBox.Show("Kérlek adj meg egy késleltetési időtartamot!", "Hiba!",
-                MessageBoxButtons.OK, MessageBoxIcon.Error);
-            parent.setButtons(true);
-        }
-
-        public void noText()
-        {
-            MessageBox.Show("Kérlek írj be egy szöveget, vagy válassz ki egy fájlt!", "Hiba!",
-                MessageBoxButtons.OK, MessageBoxIcon.Error);
-            parent.startButton.Enabled = true;
-        }
-
         int typedIndex = 0;
+        long startTime = 0;
+        long stopTime = 0;
 
         public void write()
         {
             typedIndex = 0;
+            parent.progressBar1.Value = 0;
+            startTime = DateTime.Now.Ticks;
+            
             if(parent.enterBefore.Checked) pressEnter(false);
             Timer timer1 = new Timer    
             {    
@@ -87,12 +74,12 @@ namespace TyperHelper
             else
             {
                 if(parent.enterAfter.Checked) pressEnter(false);
-                parent.enterAfter.Enabled = true;
-                parent.enterBefore.Enabled = true;
-                parent.button1.Enabled = true;
-                parent.startButton.Enabled = true;
-                parent.progressBar1.Value = 100;
+                parent.setButtons(true);
+                parent.progressBar1.Value = parent.progressBar1.Maximum;
                 ((Timer)sender).Stop();
+                stopTime = DateTime.Now.Ticks;
+                MessageBox.Show("A szöveg begépelése elkészült  "+Math.Round((stopTime-startTime)/10000000.0f,2)+" másodperc alatt!", "Kész", MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
             }
         }
 
