@@ -17,3 +17,6 @@ E:\Csány\C#\TyperHelper\obj\Debug\TyperHelper.Properties.Resources.resources
 E:\Csány\C#\TyperHelper\obj\Debug\TyperHelper.csproj.GenerateResource.cache
 E:\Csány\C#\TyperHelper\obj\Debug\TyperHelper.exe
 E:\Csány\C#\TyperHelper\obj\Debug\TyperHelper.pdb
+E:\Csány\C#\TyperHelper\bin\Debug\hu\TyperHelper.resources.dll
+E:\Csány\C#\TyperHelper\obj\Debug\TyperHelper.Form1.hu.resources
+E:\Csány\C#\TyperHelper\obj\Debug\hu\TyperHelper.resources.dll

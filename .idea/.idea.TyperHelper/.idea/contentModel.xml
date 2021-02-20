@@ -8,6 +8,7 @@
       <e p="bin" t="ExcludeRecursive" />
       <e p="Form1.cs" t="Include" />
       <e p="Form1.Designer.cs" t="Include" />
+      <e p="Form1.hu.resx" t="Include" />
       <e p="Form1.resx" t="Include" />
       <e p="KeyCodes.cs" t="Include" />
       <e p="MainHandler.cs" t="Include" />

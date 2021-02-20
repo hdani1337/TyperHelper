@@ -38,9 +38,9 @@ namespace TyperHelper
         public double progressValue;
         
         public void updateProgressBar()
-        {
-            progressValue += (double)(1.0/parent.allTextLength);
+        {            
             if (parent.text.Count != 0){
+                progressValue += (double)(1.0/parent.allTextLength);
                 parent.progressBar1.Invoke((Action) (() =>
                     parent.progressBar1.Value = (int) (progressValue*100)));
             }
@@ -50,7 +50,7 @@ namespace TyperHelper
         {
             MessageBox.Show("Kérlek adj meg egy késleltetési időtartamot!", "Hiba!",
                 MessageBoxButtons.OK, MessageBoxIcon.Error);
-            parent.startButton.Enabled = true;
+            parent.setButtons(true);
         }
 
         public void noText()
