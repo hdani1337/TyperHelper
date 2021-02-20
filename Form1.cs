@@ -17,17 +17,17 @@ namespace TyperHelper
 {
     public partial class Form1 : Form
     {
-        private MainHandler _mainHandler;
+        private MainHandler _mainHandler;//MainHandler példány
         
-        public List<Process> processes;
-        public List<Process> processesVisible;
-        public List<string> processNames;
-        public Process selectedProcess = null;
+        public List<Process> processes;//Folyamatok
+        public List<Process> processesVisible;//Látható folyamatok (amiknek vannak ablakai)
+        public List<string> processNames;//Folyamatok nevei
+        public Process selectedProcess = null;//Kiválasztott folyamat
         
-        public List<string> text = new List<string>();
-        public int latency = 0;
-        public int allTextLength= 0;
-        public List<int> breaks = new List<int>();
+        public List<string> text = new List<string>();//Beírt vagy betöltött szöveg
+        public int latency = 0;//Késleltetés ezredmásodpercben
+        public int allTextLength = 0;//Beírt vagy betöltött szöveg hossza
+        public List<int> breaks = new List<int>();//Sortörések indexei
 
         public Form1()
         {
@@ -37,6 +37,9 @@ namespace TyperHelper
             checkStart();
         }
 
+        /**
+         * Látható folyamatok feltöltése a listába
+         **/
         private void initLists()
         {
             processes = Process.GetProcesses().ToList();
@@ -48,10 +51,13 @@ namespace TyperHelper
                     processNames.Add("["+p.ProcessName.Substring(0,1).ToUpper()+p.ProcessName.Substring(1,p.ProcessName.Length-1)+"]: " + p.MainWindowTitle);
                     processesVisible.Add(p);
                 }
-            
+
             progresses.DataSource = processNames;
         }
 
+        /**
+         * Ha a fájlkiválasztásnál OK gombot nyom le, ez fut le
+         **/
         private void chooseFile_FileOk(object sender, CancelEventArgs e)
         {
             if (!chooseFile.FileName.EndsWith(".txt"))
@@ -67,6 +73,9 @@ namespace TyperHelper
             }
         }
 
+        /**
+         * Folyamat kiválasztva
+         **/
         private void progresses_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (processesVisible != null){
@@ -76,11 +85,17 @@ namespace TyperHelper
             }
         }
 
+        /**
+         * Ha rákattintunk a folyamat kiválasztásra, frissüljön a lista
+         **/
         private void progresses_Click(object sender, EventArgs e)
         {
             initLists();
         }
 
+        /**
+         * UI engedélyezése vagy tiltása
+         **/
         public void setButtons(bool enabled)
         {
             enterAfter.Enabled = enabled;
@@ -91,6 +106,9 @@ namespace TyperHelper
             numericUpDown.Enabled = enabled;
         }
 
+        /**
+         * Írás indítása
+         **/
         private void startButton_Click(object sender, EventArgs e)
         {
             latency = 0;
@@ -107,7 +125,7 @@ namespace TyperHelper
             {
                 try 
                 {
-                    text = File.ReadAllLines(chooseFile.FileName).ToList();
+                    text = File.ReadAllText(chooseFile.FileName).Split('\r').ToList();
                 }
                 catch (Exception err)
                 {
@@ -119,10 +137,7 @@ namespace TyperHelper
             for (int ind = 0; ind < text.Count; ind++)
             {
                 for (int typed = 0; typed < text[ind].Length; typed++)
-                {
                     allTextLength++;
-                }
-
                 breaks.Add(allTextLength);
             }
 
@@ -131,28 +146,35 @@ namespace TyperHelper
             _mainHandler.write();
         }
 
+        /**
+         * Szöveg gépelése
+         **/
         private void szovegInput_TextChanged(object sender, EventArgs e)
         {
             textTypedCheck.Checked = (szovegInput.Text.Length > 0);
             checkStart();
         }
 
-        private void tableLayoutPanel9_Paint(object sender, PaintEventArgs e)
-        {
-           
-        }
-
+        /**
+         * Késleltetés változtatása
+         **/
         private void numericUpDown_ValueChanged(object sender, EventArgs e)
         {
             latencyCheck.Checked = (numericUpDown.Value > 0);
             checkStart();
         }
 
+        /**
+         * Fájl kiválasztása... gomb
+         **/
         private void button1_Click_1(object sender, EventArgs e)
         {
             chooseFile.ShowDialog();
         }
 
+        /**
+         * Követelmények ellenőrzése
+         **/
         private void checkStart()
         {
             startButton.Enabled = (textTypedCheck.Checked && latencyCheck.Checked && processSelectedCheck.Checked);

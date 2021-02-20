@@ -217,7 +217,6 @@
             // progresses
             // 
             resources.ApplyResources(this.progresses, "progresses");
-            this.progresses.FormattingEnabled = true;
             this.progresses.Name = "progresses";
             this.progresses.SelectedIndexChanged += new System.EventHandler(this.progresses_SelectedIndexChanged);
             this.progresses.Click += new System.EventHandler(this.progresses_Click);
@@ -260,7 +259,6 @@
             this.tableLayoutPanel9.Controls.Add(this.numericUpDown, 1, 0);
             this.tableLayoutPanel9.Controls.Add(this.label4, 0, 0);
             this.tableLayoutPanel9.Name = "tableLayoutPanel9";
-            this.tableLayoutPanel9.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel9_Paint);
             // 
             // numericUpDown
             // 
@@ -385,15 +383,15 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel13;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel14;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.CheckBox textTypedCheck;
-        private System.Windows.Forms.CheckBox processSelectedCheck;
-        private System.Windows.Forms.CheckBox latencyCheck;
-        private System.Windows.Forms.NumericUpDown numericUpDown;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button startButton;
-        public System.Windows.Forms.ProgressBar progressBar1;
-        public System.Windows.Forms.CheckBox enterBefore;
         public System.Windows.Forms.CheckBox enterAfter;
+        public System.Windows.Forms.CheckBox enterBefore;
+        public System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.Button startButton;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.NumericUpDown numericUpDown;
+        private System.Windows.Forms.CheckBox latencyCheck;
+        private System.Windows.Forms.CheckBox processSelectedCheck;
+        private System.Windows.Forms.CheckBox textTypedCheck;
     }
 }
 

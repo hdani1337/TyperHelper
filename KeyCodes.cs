@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Windows.Forms;
 
 namespace TyperHelper
 {
@@ -19,6 +20,9 @@ namespace TyperHelper
         public static Int32 WM_KEYDOWN = 0x100;
         public static Int32 WM_KEYUP = 0x101;
 
+        /**
+         * Í betű nincs, bocsi
+         **/
         public static byte getHungarianKeys(char c)
         {
             switch (c.ToString().ToLower())
@@ -54,6 +58,10 @@ namespace TyperHelper
                 case "á":
                 {
                     return 0xDE;
+                }
+                case "í":
+                {
+                    return 0xED;
                 }
                 
                 case " ":

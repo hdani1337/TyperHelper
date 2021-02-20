@@ -20,3 +20,6 @@ E:\Csány\C#\TyperHelper\obj\Debug\TyperHelper.pdb
 E:\Csány\C#\TyperHelper\bin\Debug\hu\TyperHelper.resources.dll
 E:\Csány\C#\TyperHelper\obj\Debug\TyperHelper.Form1.hu.resources
 E:\Csány\C#\TyperHelper\obj\Debug\hu\TyperHelper.resources.dll
+E:\Csány\C#\TyperHelper\bin\Debug\Microsoft.Office.Interop.Word.dll
+E:\Csány\C#\TyperHelper\bin\Debug\stdole.dll
+E:\Csány\C#\TyperHelper\obj\Debug\TyperHelper.csproj.CopyComplete
